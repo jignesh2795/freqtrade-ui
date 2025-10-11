@@ -39,6 +39,7 @@ develop
 - ✅ Created strategy service
 - ✅ Created backtest service
 - ✅ Created market service for pair management
+- ✅ Created service index exports
 
 ### Day 5: WebSocket Integration (Tuesday) 🚧
 - Coming soon...
