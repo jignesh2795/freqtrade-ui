@@ -35,6 +35,7 @@ develop
 - ✅ Created centralized API endpoints module
 - ✅ Created bot service with API methods
 - ✅ Created trade service with CRUD operations
+- ✅ Created performance service for stats
 
 ### Day 5: WebSocket Integration (Tuesday) 🚧
 - Coming soon...
