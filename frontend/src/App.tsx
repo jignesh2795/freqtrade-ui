@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { ComponentDemo } from './stories/ComponentDemo';
+import { ComponentShowcase } from './ComponentShowcase';
 
 function App() {
   useEffect(() => {
@@ -128,12 +128,12 @@ function App() {
             </div>
           </div>
 
-          {/* Component Demo */}
+          {/* Component Showcase */}
           <div className="glass-dark rounded-2xl p-8 mb-8">
             <h2 className="text-2xl font-bold mb-6 text-dark-100">
-              Component Demo
+              Component Showcase
             </h2>
-            <ComponentDemo />
+            <ComponentShowcase />
           </div>
 
           {/* Footer */}

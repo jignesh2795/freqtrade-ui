@@ -1,40 +1,20 @@
-export { Button } from './Button';
-export type { ButtonProps } from './Button';
+// Base Components
+export * from './Button';
+export * from './Card';
+export * from './Input';
+export * from './Select';
 
-export {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-  CardContent,
-  CardFooter,
-} from './Card';
-export type {
-  CardProps,
-  CardHeaderProps,
-  CardTitleProps,
-  CardDescriptionProps,
-  CardContentProps,
-  CardFooterProps,
-} from './Card';
+// Feedback Components
+export * from './Modal';
+export * from './Toast';
+export * from './Spinner';
+export * from './Skeleton';
+export * from './Tooltip';
 
-export { Input } from './Input';
-export type { InputProps } from './Input';
+// Data Display
+export * from './Badge';
+export * from './Tabs';
 
-export { Select } from './Select';
-export type { SelectProps, SelectOption } from './Select';
-
-export { Modal, ModalFooter } from './Modal';
-export type { ModalProps, ModalFooterProps } from './Modal';
-
-export { Toast, ToastContainer } from './Toast';
-export type { ToastProps, ToastType, ToastContainerProps } from './Toast';
-
-export { Badge } from './Badge';
-export type { BadgeProps } from './Badge';
-
-export { Switch } from './Switch';
-export type { SwitchProps } from './Switch';
-
-export { Slider } from './Slider';
-export type { SliderProps } from './Slider';
+// Form Components
+export * from './Switch';
+export * from './Slider';
