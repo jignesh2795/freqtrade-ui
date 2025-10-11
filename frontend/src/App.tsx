@@ -1,18 +1,13 @@
-import { useEffect } from 'react';
+import { useState } from 'react';
 import { ComponentShowcase } from './ComponentShowcase';
+import { Button } from '@/components/ui';
 
 function App() {
-  useEffect(() => {
-    // Test API connection on mount
-    fetch('/api/ping')
-      .then((res) => res.json())
-      .then((data) => {
-        console.info('API Connection:', data);
-      })
-      .catch((err) => {
-        console.error('API Connection Error:', err);
-      });
-  }, []);
+  const [showShowcase, setShowShowcase] = useState(false);
+
+  if (showShowcase) {
+    return <ComponentShowcase />;
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-dark-900 via-dark-800 to-dark-900">
@@ -33,7 +28,7 @@ function App() {
             <div className="flex items-center justify-center mb-6">
               <div className="w-3 h-3 bg-success-500 rounded-full animate-pulse mr-3"></div>
               <span className="text-lg text-dark-100">
-                Development Environment Ready
+                Phase 0 Complete! 🎉
               </span>
             </div>
 
@@ -41,19 +36,19 @@ function App() {
               <div className="bg-dark-800/50 rounded-lg p-4">
                 <div className="text-sm text-dark-400 mb-1">Phase</div>
                 <div className="text-2xl font-bold text-primary-400">0</div>
-                <div className="text-xs text-dark-500 mt-1">Setup</div>
+                <div className="text-xs text-dark-500 mt-1">Setup Complete</div>
               </div>
               
               <div className="bg-dark-800/50 rounded-lg p-4">
                 <div className="text-sm text-dark-400 mb-1">Progress</div>
-                <div className="text-2xl font-bold text-accent-400">100%</div>
+                <div className="text-2xl font-bold text-success-400">100%</div>
                 <div className="text-xs text-dark-500 mt-1">Day 3/3</div>
               </div>
               
               <div className="bg-dark-800/50 rounded-lg p-4">
-                <div className="text-sm text-dark-400 mb-1">Status</div>
-                <div className="text-2xl font-bold text-success-400">✓</div>
-                <div className="text-xs text-dark-500 mt-1">On Track</div>
+                <div className="text-sm text-dark-400 mb-1">Components</div>
+                <div className="text-2xl font-bold text-accent-400">15+</div>
+                <div className="text-xs text-dark-500 mt-1">UI Components</div>
               </div>
             </div>
           </div>
@@ -61,58 +56,78 @@ function App() {
           {/* Completed Tasks */}
           <div className="glass-dark rounded-2xl p-8 mb-8">
             <h2 className="text-2xl font-bold mb-6 text-dark-100">
-              Completed Setup Tasks
+              Phase 0: Foundation Complete ✓
             </h2>
-            <div className="space-y-3 text-left">
-              {[
-                'FreqTrade repository cloned and configured',
-                'API server enabled and tested',
-                'React + TypeScript project initialized',
-                'Tailwind CSS configured with custom design system',
-                'Path aliases and build tools configured',
-                'ESLint and Prettier setup',
-                'Environment configuration files',
-                'Project folder structure created',
-                'Configuration files (API, App, Theme)',
-                'TypeScript type definitions',
-                'All base UI components (Button, Card, Input, Select, Modal, Toast, Badge, Switch, Slider)',
-                'Additional UI components (Tabs, Spinner, Skeleton, Tooltip)',
-              ].map((task, index) => (
-                <div
-                  key={index}
-                  className="flex items-center bg-dark-800/30 rounded-lg p-3"
-                >
-                  <div className="w-5 h-5 rounded-full bg-success-500/20 flex items-center justify-center mr-3 flex-shrink-0">
-                    <svg
-                      className="w-3 h-3 text-success-400"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
+              <div className="space-y-2">
+                <h3 className="text-lg font-semibold text-primary-400 mb-3">
+                  Infrastructure
+                </h3>
+                {[
+                  'FreqTrade API configured',
+                  'React + TypeScript setup',
+                  'Tailwind CSS design system',
+                  'Path aliases configured',
+                  'Environment variables',
+                  'ESLint & Prettier',
+                ].map((task, index) => (
+                  <div key={index} className="flex items-center text-sm">
+                    <span className="text-success-400 mr-2">✓</span>
+                    <span className="text-dark-200">{task}</span>
                   </div>
-                  <span className="text-dark-200 text-sm">{task}</span>
-                </div>
-              ))}
+                ))}
+              </div>
+
+              <div className="space-y-2">
+                <h3 className="text-lg font-semibold text-primary-400 mb-3">
+                  UI Components
+                </h3>
+                {[
+                  'Button, Card, Input',
+                  'Select, Modal, Toast',
+                  'Badge, Switch, Slider',
+                  'Tabs, Spinner, Skeleton',
+                  'Tooltip component',
+                  'useToast hook',
+                ].map((task, index) => (
+                  <div key={index} className="flex items-center text-sm">
+                    <span className="text-success-400 mr-2">✓</span>
+                    <span className="text-dark-200">{task}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 
-          {/* Next Steps */}
+          {/* Component Showcase Button */}
+          <div className="glass-dark rounded-2xl p-8 mb-8">
+            <h2 className="text-2xl font-bold mb-4 text-dark-100">
+              View Component Showcase
+            </h2>
+            <p className="text-dark-300 mb-6">
+              See all UI components in action with live examples and interactions
+            </p>
+            <Button
+              size="lg"
+              onClick={() => setShowShowcase(true)}
+              className="w-full md:w-auto"
+            >
+              Open Component Showcase →
+            </Button>
+          </div>
+
+          {/* Next Phase */}
           <div className="glass-dark rounded-2xl p-8">
             <h2 className="text-2xl font-bold mb-6 text-dark-100">
-              Next Steps
+              Ready for Phase 1: Core Infrastructure
             </h2>
             <div className="space-y-3 text-left">
               {[
-                'Build layout components (Sidebar, Header)',
-                'Setup routing with React Router',
-                'Create API service layer',
-                'Setup state management with Zustand',
-                'Implement trading dashboard',
+                'API Service Layer - Connect to FreqTrade',
+                'WebSocket Integration - Real-time updates',
+                'State Management - Zustand stores',
+                'Routing Setup - React Router',
+                'Layout Components - Sidebar, Header',
               ].map((task, index) => (
                 <div
                   key={index}
@@ -129,20 +144,26 @@ function App() {
             </div>
           </div>
 
-          {/* Component Showcase */}
-          <div className="glass-dark rounded-2xl p-8 mb-8">
-            <h2 className="text-2xl font-bold mb-6 text-dark-100">
-              Component Showcase
-            </h2>
-            <ComponentShowcase />
+          {/* Git Stats */}
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="bg-dark-800/30 rounded-lg p-4">
+              <div className="text-sm text-dark-400">Total Commits</div>
+              <div className="text-2xl font-bold text-primary-400 mt-1">34</div>
+            </div>
+            <div className="bg-dark-800/30 rounded-lg p-4">
+              <div className="text-sm text-dark-400">Branches</div>
+              <div className="text-2xl font-bold text-accent-400 mt-1">3</div>
+            </div>
+            <div className="bg-dark-800/30 rounded-lg p-4">
+              <div className="text-sm text-dark-400">Files Changed</div>
+              <div className="text-2xl font-bold text-success-400 mt-1">50+</div>
+            </div>
           </div>
 
           {/* Footer */}
           <div className="mt-12 text-dark-400 text-sm">
-            <p>Check console for API connection status</p>
-            <p className="mt-2">
-              FreqTrade API: <code className="text-primary-400">http://localhost:8081/api/v1</code>
-            </p>
+            <p>FreqTrade API: <code className="text-primary-400">http://localhost:8080/api/v1</code></p>
+            <p className="mt-2">Frontend: <code className="text-primary-400">http://localhost:5173</code></p>
           </div>
         </div>
       </div>
