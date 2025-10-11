@@ -78,14 +78,14 @@ npm run dev
 
 ## 🗺️ Development Roadmap
 
-- Phase 0: Project Setup
+- Phase 0: Project Setup ✅
 - Phase 1: Core Infrastructure
 - Phase 2: MVP Features
 - Phase 3: Advanced Features
 - Phase 4: Production Ready
 
 ## 📝 Current Status
-Phase 0: Project Setup - Complete
+Phase 0: Project Setup - Complete 🎉
 
 - FreqTrade integration ✅
 - API configuration ✅
@@ -93,6 +93,7 @@ Phase 0: Project Setup - Complete
 - React setup ✅
 - Design system ✅
 - Base components ✅
+- Component showcase available at http://localhost:5175
 
 ## 🤝 Contributing
 This is a personal project. Contributions guidelines will be added later.
