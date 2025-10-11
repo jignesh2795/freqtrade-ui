@@ -596,8 +596,20 @@ frontend/src/components/ui/
 ├── Toast/
 │   ├── Toast.tsx
 │   └── index.ts
+├── Spinner/
+│   ├── Spinner.tsx
+│   └── index.ts
+├── Skeleton/
+│   ├── Skeleton.tsx
+│   └── index.ts
+├── Tooltip/
+│   ├── Tooltip.tsx
+│   └── index.ts
 ├── Badge/
 │   ├── Badge.tsx
+│   └── index.ts
+├── Tabs/
+│   ├── Tabs.tsx
 │   └── index.ts
 ├── Switch/
 │   ├── Switch.tsx

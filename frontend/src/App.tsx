@@ -76,6 +76,7 @@ function App() {
                 'Configuration files (API, App, Theme)',
                 'TypeScript type definitions',
                 'All base UI components (Button, Card, Input, Select, Modal, Toast, Badge, Switch, Slider)',
+                'Additional UI components (Tabs, Spinner, Skeleton, Tooltip)',
               ].map((task, index) => (
                 <div
                   key={index}
