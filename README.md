@@ -74,6 +74,7 @@ npm run dev
 - [FreqTrade Setup](docs/FREQTRADE_SETUP.md)
 - [API Endpoints](docs/API_ENDPOINTS.md)
 - [Day 2 Summary](docs/DAY_2_SUMMARY.md)
+- [Day 3 TODO List](docs/DAY_3_TODO.md)
 
 ## 🗺️ Development Roadmap
 
