@@ -4,3 +4,4 @@ export * from './performanceService';
 export * from './strategyService';
 export * from './backtestService';
 export * from './marketService';
+export * from './logService';

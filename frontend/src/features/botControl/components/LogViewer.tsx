@@ -2,13 +2,14 @@ import { useState, useEffect, useRef } from 'react';
 import { Card, CardHeader, CardTitle, CardContent, Button, Input, Badge } from '@/components/ui';
 import { RefreshCw, Download, Search, X } from 'lucide-react';
 import { useApi } from '@/hooks';
-import { apiClient } from '@/services/api';
+import { logService } from '@/services/freqtrade';
 import { clsx } from 'clsx';
 
 interface LogEntry {
   timestamp: string;
   level: string;
   message: string;
+  logger: string;
 }
 
 export const LogViewer = () => {
@@ -20,21 +21,15 @@ export const LogViewer = () => {
 
   const { data, loading, refetch } = useApi(
     async () => {
-      const response = await apiClient.get('/logs');
+      const response = await logService.getLogs();
       return response;
     },
     { autoFetch: true }
   );
 
   useEffect(() => {
-    if (data && Array.isArray(data)) {
-      // Parse logs (format depends on FreqTrade response)
-      const parsedLogs: LogEntry[] = data.map((log: any, index: number) => ({
-        timestamp: new Date().toISOString(),
-        level: 'INFO',
-        message: typeof log === 'string' ? log : JSON.stringify(log),
-      }));
-      setLogs(parsedLogs);
+    if (data) {
+      setLogs(data);
     }
   }, [data]);
 
