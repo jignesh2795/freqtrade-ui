@@ -45,3 +45,9 @@ export const CHART_INDICATORS = [
   'SMA', 'EMA', 'RSI', 'MACD', 'BB', 'STOCH',
   'ATR', 'ADX', 'CCI', 'MFI'
 ] as const;
+
+export const REFRESH_INTERVALS = {
+  fast: 5000,    // 5 seconds
+  medium: 15000, // 15 seconds
+  slow: 30000,   // 30 seconds
+} as const;
