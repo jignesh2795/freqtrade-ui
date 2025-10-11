@@ -34,7 +34,10 @@
       "@/styles/*": ["./src/styles/*"],
       "@/config/*": ["./src/config/*"],
       "@/assets/*": ["./src/assets/*"]
-    }
+    },
+    
+    /* Deprecation handling */
+    "ignoreDeprecations": "6.0"
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
