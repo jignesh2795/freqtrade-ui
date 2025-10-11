@@ -73,6 +73,7 @@ npm run dev
 
 - [FreqTrade Setup](docs/FREQTRADE_SETUP.md)
 - [API Endpoints](docs/API_ENDPOINTS.md)
+- [Day 2 Summary](docs/DAY_2_SUMMARY.md)
 
 ## 🗺️ Development Roadmap
 
@@ -85,12 +86,12 @@ npm run dev
 ## 📝 Current Status
 Phase 0: Project Setup - In Progress
 
-- FreqTrade integration
-- API configuration
-- Documentation
-- React setup
-- Design system
-- Base components
+- FreqTrade integration ✅
+- API configuration ✅
+- Documentation ✅
+- React setup ✅
+- Design system ✅
+- Base components (Coming soon)
 
 ## 🤝 Contributing
 This is a personal project. Contributions guidelines will be added later.
