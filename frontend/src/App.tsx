@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { ComponentDemo } from './stories/ComponentDemo';
 
 function App() {
   useEffect(() => {
@@ -74,6 +75,7 @@ function App() {
                 'Project folder structure created',
                 'Configuration files (API, App, Theme)',
                 'TypeScript type definitions',
+                'Base UI components (Button, Card)',
               ].map((task, index) => (
                 <div
                   key={index}
@@ -105,7 +107,7 @@ function App() {
             </h2>
             <div className="space-y-3 text-left">
               {[
-                'Create base UI components (Button, Card, Input, etc.)',
+                'Create remaining base UI components (Input, Select, Modal, etc.)',
                 'Build layout components (Sidebar, Header)',
                 'Setup routing with React Router',
                 'Create API service layer',
@@ -124,6 +126,14 @@ function App() {
                 </div>
               ))}
             </div>
+          </div>
+
+          {/* Component Demo */}
+          <div className="glass-dark rounded-2xl p-8 mb-8">
+            <h2 className="text-2xl font-bold mb-6 text-dark-100">
+              Component Demo
+            </h2>
+            <ComponentDemo />
           </div>
 
           {/* Footer */}
