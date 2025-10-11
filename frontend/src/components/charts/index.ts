@@ -6,3 +6,6 @@ export type { TimeframeSelectorProps } from './TimeframeSelector';
 
 export { PairSelector } from './PairSelector';
 export type { PairSelectorProps } from './PairSelector';
+
+export { ChartControls } from './ChartControls';
+export type { ChartControlsProps } from './ChartControls';
