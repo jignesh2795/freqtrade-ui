@@ -14,6 +14,7 @@ export * from './Tooltip';
 // Data Display
 export * from './Badge';
 export * from './Tabs';
+export * from './Pagination';
 
 // Form Components
 export * from './Switch';
