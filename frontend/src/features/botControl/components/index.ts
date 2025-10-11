@@ -1,4 +1,4 @@
-export * from './BotControlPanel';
-export * from './LogViewer';
-export * from './QuickSettings';
-export * from './SystemMonitor';
+export { BotControlPanel } from './BotControlPanel';
+export { LogViewer } from './LogViewer';
+export { QuickSettings } from './QuickSettings';
+export { SystemMonitor } from './SystemMonitor';
