@@ -23,28 +23,23 @@ export function useWebSocket(options: UseWebSocketOptions = {}): UseWebSocketRet
   const { autoConnect = true, onConnect, onDisconnect, onError } = options;
   
   const isConnectedRef = useRef(false);
-  const optionsRef = useRef(options);
-
-  useEffect(() => {
-    optionsRef.current = options;
-  }, [options]);
 
   const connect = useCallback(() => {
     try {
       wsClient.connect();
       isConnectedRef.current = true;
-      optionsRef.current.onConnect?.();
+      onConnect?.();
     } catch (error) {
       const err = error instanceof Error ? error : new Error('WebSocket connection failed');
-      optionsRef.current.onError?.(err);
+      onError?.(err);
     }
-  }, []);
+  }, [onConnect, onError]);
 
   const disconnect = useCallback(() => {
     wsClient.disconnect();
     isConnectedRef.current = false;
-    optionsRef.current.onDisconnect?.();
-  }, []);
+    onDisconnect?.();
+  }, [onDisconnect]);
 
   const subscribe = useCallback(
     (event: WebSocketEventType, callback: WebSocketCallback) => {

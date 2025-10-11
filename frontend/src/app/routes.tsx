@@ -1,5 +1,6 @@
 import { lazy } from 'react';
 import { Navigate } from 'react-router-dom';
+import type { ReactElement } from 'react';
 
 // Lazy load pages
 const Dashboard = lazy(() => import('@/features/dashboard/Dashboard'));
@@ -13,7 +14,7 @@ const Settings = lazy(() => import('@/features/settings/SettingsPage'));
 
 export interface RouteConfig {
   path: string;
-  element: JSX.Element;
+  element: ReactElement;
   name: string;
   icon?: string;
   showInNav?: boolean;

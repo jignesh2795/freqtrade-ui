@@ -1,6 +1,6 @@
 import { apiClient } from '../api/client';
 import { endpoints } from '../api/endpoints';
-import type { Ticker, OHLCV } from '@/types';
+import type { OHLCV } from '@/types';
 
 export interface WhitelistResponse {
   whitelist: string[];

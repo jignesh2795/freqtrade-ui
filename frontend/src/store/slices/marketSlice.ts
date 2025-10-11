@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
-import { marketService, strategyService } from '@/services/freqtrade';
+import { marketService } from '@/services/freqtrade';
 import type { OHLCV } from '@/types';
 
 export interface MarketState {
