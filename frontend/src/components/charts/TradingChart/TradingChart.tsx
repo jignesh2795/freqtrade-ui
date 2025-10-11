@@ -1,9 +1,10 @@
 import { useEffect, useRef } from 'react';
-import { OHLCV } from '@/types';
+import { OHLCV, Trade } from '@/types';
 
 export interface TradingChartProps {
   data: OHLCV[];
   pair: string;
+  trades?: Trade[];
   height?: number;
   showVolume?: boolean;
 }
@@ -11,6 +12,7 @@ export interface TradingChartProps {
 export const TradingChart: React.FC<TradingChartProps> = ({
   data,
   pair,
+  trades = [],
   height = 500,
   showVolume = true,
 }) => {
@@ -44,7 +46,7 @@ export const TradingChart: React.FC<TradingChartProps> = ({
         <div className="text-sm font-semibold text-dark-50">{pair}</div>
         {data.length > 0 && (
           <div className="text-xs text-dark-400 mt-1">
-            {data.length} candles
+            {data.length} candles • {trades.length} trades
           </div>
         )}
       </div>
@@ -54,8 +56,10 @@ export const TradingChart: React.FC<TradingChartProps> = ({
         ref={chartContainerRef} 
         className="rounded-lg overflow-hidden border border-dark-700 bg-dark-900 flex items-center justify-center"
       >
-        <div className="text-dark-500">
-          Chart implementation pending - lightweight-charts integration needed
+        <div className="text-dark-500 text-center p-8">
+          <div className="font-semibold mb-2">Lightweight Charts API Issue</div>
+          <div className="text-sm">Chart implementation pending due to API compatibility issues</div>
+          <div className="text-xs mt-2">Data: {data.length} candles, Trades: {trades.length}</div>
         </div>
       </div>
     </div>
