@@ -36,6 +36,7 @@ develop
 - ✅ Created bot service with API methods
 - ✅ Created trade service with CRUD operations
 - ✅ Created performance service for stats
+- ✅ Created strategy service
 
 ### Day 5: WebSocket Integration (Tuesday) 🚧
 - Coming soon...
