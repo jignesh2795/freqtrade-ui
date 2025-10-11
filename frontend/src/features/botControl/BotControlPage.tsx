@@ -1,4 +1,4 @@
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui';
+import { BotControlPanel } from './components';
 
 export default function BotControlPage() {
   return (
@@ -10,14 +10,7 @@ export default function BotControlPage() {
         </p>
       </div>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Control Panel</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <p className="text-dark-300">Bot control features coming in Phase 2</p>
-        </CardContent>
-      </Card>
+      <BotControlPanel />
     </div>
   );
 }
