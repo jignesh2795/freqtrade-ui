@@ -1,3 +1,8 @@
+import { useState } from 'react';
+import { Button } from '@/components/ui';
+import { RefreshCw } from 'lucide-react';
+import { useToast } from '@/hooks';
+import { useBotStore, useTradeStore } from '@/store';
 import {
   PerformanceSummary,
   ActiveTrades,
@@ -9,14 +14,46 @@ import {
 } from './components';
 
 export default function Dashboard() {
+  const [refreshing, setRefreshing] = useState(false);
+  const { success } = useToast();
+  const { fetchStatus } = useBotStore();
+  const { fetchOpenTrades, fetchClosedTrades } = useTradeStore();
+
+  const handleRefresh = async () => {
+    setRefreshing(true);
+    try {
+      await Promise.all([
+        fetchStatus(),
+        fetchOpenTrades(),
+        fetchClosedTrades(10),
+      ]);
+      success('Dashboard Refreshed', 'All data has been updated');
+    } catch (error) {
+      console.error('Refresh failed:', error);
+    } finally {
+      setRefreshing(false);
+    }
+  };
+
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div>
-        <h1 className="text-3xl font-bold text-dark-50">Dashboard</h1>
-        <p className="text-dark-400 mt-1">
-          Monitor your bot performance and active trades
-        </p>
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-3xl font-bold text-dark-50">Dashboard</h1>
+          <p className="text-dark-400 mt-1">
+            Monitor your bot performance and active trades
+          </p>
+        </div>
+        <Button
+          variant="secondary"
+          onClick={handleRefresh}
+          disabled={refreshing}
+          className="flex items-center gap-2"
+        >
+          <RefreshCw className={`w-4 h-4 ${refreshing ? 'animate-spin' : ''}`} />
+          Refresh
+        </Button>
       </div>
 
       {/* Performance Summary Cards */}
