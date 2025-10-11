@@ -3,6 +3,9 @@ import {
   ActiveTrades,
   RecentActivity,
   BotStatusCard,
+  DailyProfitChart,
+  PairPerformance,
+  TradeStatistics,
 } from './components';
 
 export default function Dashboard() {
@@ -16,20 +19,33 @@ export default function Dashboard() {
         </p>
       </div>
 
-      {/* Performance Summary */}
+      {/* Performance Summary Cards */}
       <PerformanceSummary />
 
       {/* Main Content Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Left Column - Takes 2/3 */}
+        {/* Left Column - 2/3 width */}
         <div className="lg:col-span-2 space-y-6">
+          {/* Daily Profit Chart */}
+          <DailyProfitChart />
+
+          {/* Active Trades */}
           <ActiveTrades />
-          <RecentActivity />
+
+          {/* Trade Statistics */}
+          <TradeStatistics />
         </div>
 
-        {/* Right Column - Takes 1/3 */}
+        {/* Right Column - 1/3 width */}
         <div className="space-y-6">
+          {/* Bot Status */}
           <BotStatusCard />
+
+          {/* Pair Performance */}
+          <PairPerformance />
+
+          {/* Recent Activity */}
+          <RecentActivity />
         </div>
       </div>
     </div>
