@@ -1,73 +1,99 @@
-# React + TypeScript + Vite
+# FreqTrade UI - Phase 0: Design System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Professional Trading Bot Interface built with React, TypeScript, and Tailwind CSS.
 
-Currently, two official plugins are available:
+## Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This project is the frontend interface for FreqTrade, a powerful cryptocurrency trading bot. Phase 0 focuses on establishing the design system and implementing reusable UI components.
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### UI Components
+- Button - Multiple variants and sizes
+- Card - Different styles with header/content/footer
+- Input - Text inputs with validation and icons
+- Select - Custom dropdown with search capabilities
+- Modal - Accessible dialog with header and footer
+- Toast - Notification system with auto-dismiss
+- Badge - Status indicators with dot variants
+- Switch - Toggle component with labels
+- Slider - Range selector with marks
+- Tabs - Content organization with keyboard navigation
+- Spinner - Loading indicators in multiple sizes
+- Skeleton - Placeholder loading states
+- Tooltip - Contextual help with positioning options
 
-## Expanding the ESLint configuration
+### Technical Features
+- React 18 with TypeScript
+- Vite build tool for fast development
+- Tailwind CSS v4 with custom design system
+- Responsive design with mobile-first approach
+- Dark theme with glass morphism effects
+- Full TypeScript type safety
+- ESLint and Prettier for code quality
+- Path aliases for clean imports
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Getting Started
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Prerequisites
+- Node.js (v16 or higher)
+- npm or yarn
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Installation
+```bash
+cd frontend
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Development
+```bash
+npm run dev
 ```
+Open http://localhost:5173 in your browser.
+
+### Build
+```bash
+npm run build
+```
+
+### Type Checking
+```bash
+npm run type-check
+```
+
+### Linting
+```bash
+npm run lint
+```
+
+## Project Structure
+```
+src/
+├── components/     # Reusable UI components
+├── hooks/          # Custom React hooks
+├── stories/        # Component demos
+├── App.tsx         # Main application component
+├── main.tsx        # Application entry point
+└── vite-env.d.ts   # TypeScript declarations
+```
+
+## Component Showcase
+Visit the component showcase at the root URL to see all UI components in action with live examples and interactions.
+
+## Design System
+- Custom dark theme with glass morphism effects
+- Consistent spacing and typography
+- Responsive breakpoints for all device sizes
+- Accessible color palette and contrast ratios
+- Smooth animations and transitions
+
+## Next Steps
+Phase 1 will focus on:
+1. API Service Layer - Connect to FreqTrade backend
+2. WebSocket Integration - Real-time market data
+3. State Management - Zustand stores for application state
+4. Routing Setup - React Router for navigation
+5. Layout Components - Sidebar, Header, Dashboard layout
+
+## License
+This project is part of the FreqTrade UI initiative.

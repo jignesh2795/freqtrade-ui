@@ -77,10 +77,10 @@ export const Tooltip: React.FC<TooltipProps> = ({
 
   return (
     <>
-      {React.cloneElement(children, {
+      {React.isValidElement(children) && React.cloneElement(children, {
         onMouseEnter: handleMouseEnter,
         onMouseLeave: handleMouseLeave,
-      })}
+      } as React.HTMLAttributes<HTMLElement>)}
 
       {isVisible &&
         createPortal(

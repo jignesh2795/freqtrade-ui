@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Button } from '../components/ui/Button';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '../components/ui/Card';
 import { Input } from '../components/ui/Input';
 import { Select, SelectOption } from '../components/ui/Select';
 import { Modal } from '../components/ui/Modal';
+import { ModalFooter } from '../components/ui/Modal';
 import { Badge } from '../components/ui/Badge';
 import { Switch } from '../components/ui/Switch';
 import { Slider } from '../components/ui/Slider';
-import { Search, User, Lock, Eye, EyeOff, Bell, Settings } from 'lucide-react';
+import { Search, Lock } from 'lucide-react';
+import { Tooltip } from '../components/ui/Tooltip';
 
 export const ComponentDemo = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -172,14 +174,14 @@ export const ComponentDemo = () => {
               description="This is a modal description"
             >
               <p className="text-dark-300 mb-4">This is the modal content. You can put any content here.</p>
-              <Modal.ModalFooter>
+              <ModalFooter>
                 <Button variant="secondary" onClick={() => setIsModalOpen(false)}>
                   Cancel
                 </Button>
                 <Button onClick={() => setIsModalOpen(false)}>
                   Confirm
                 </Button>
-              </Modal.ModalFooter>
+              </ModalFooter>
             </Modal>
           </CardContent>
         </Card>
@@ -259,6 +261,48 @@ export const ComponentDemo = () => {
                 { value: 100, label: '100%' },
               ]}
             />
+          </CardContent>
+        </Card>
+        
+        {/* Tooltip Component */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Tooltip Component</CardTitle>
+            <CardDescription>Contextual help with positioning</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="flex gap-4 flex-wrap">
+              <Tooltip content="Top tooltip" position="top">
+                <Button>Top</Button>
+              </Tooltip>
+              
+              <Tooltip content="Bottom tooltip" position="bottom">
+                <Button>Bottom</Button>
+              </Tooltip>
+              
+              <Tooltip content="Left tooltip" position="left">
+                <Button>Left</Button>
+              </Tooltip>
+              
+              <Tooltip content="Right tooltip" position="right">
+                <Button>Right</Button>
+              </Tooltip>
+            </div>
+            
+            <div className="flex gap-4 flex-wrap pt-4">
+              <Tooltip content="Simple text tooltip">
+                <Button variant="secondary">Text Content</Button>
+              </Tooltip>
+              
+              <Tooltip content={
+                <div className="text-center">
+                  <p className="font-semibold">Rich Content</p>
+                  <p className="text-xs mt-1">This is a tooltip with HTML content</p>
+                </div>
+              }>
+                <Button variant="ghost">Rich Content</Button>
+              </Tooltip>
+            </div>
           </CardContent>
         </Card>
       </div>
