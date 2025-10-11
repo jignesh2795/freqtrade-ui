@@ -130,7 +130,7 @@ function App() {
           <div className="mt-12 text-dark-400 text-sm">
             <p>Check console for API connection status</p>
             <p className="mt-2">
-              FreqTrade API: <code className="text-primary-400">http://localhost:8080/api/v1</code>
+              FreqTrade API: <code className="text-primary-400">http://localhost:8081/api/v1</code>
             </p>
           </div>
         </div>

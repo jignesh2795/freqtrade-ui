@@ -1,9 +1,0 @@
-@import './styles/globals.css';
-@import './styles/animations.css';
-
-/* Additional global styles */
-#root {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
