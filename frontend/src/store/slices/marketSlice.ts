@@ -36,7 +36,7 @@ const initialState = {
 
 export const useMarketStore = create<MarketState>()(
   devtools(
-    (set, get) => ({
+    (set) => ({
       ...initialState,
 
       fetchWhitelist: async () => {
