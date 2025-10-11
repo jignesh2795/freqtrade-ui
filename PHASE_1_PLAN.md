@@ -37,6 +37,7 @@ develop
 - ✅ Created trade service with CRUD operations
 - ✅ Created performance service for stats
 - ✅ Created strategy service
+- ✅ Created backtest service
 
 ### Day 5: WebSocket Integration (Tuesday) 🚧
 - Coming soon...
