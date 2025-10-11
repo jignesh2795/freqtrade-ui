@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui';
 import { RefreshCw } from 'lucide-react';
 import { useToast } from '@/hooks';
 import { useBotStore, useTradeStore } from '@/store';
+import { useDashboardData } from './hooks';
 import {
   PerformanceSummary,
   ActiveTrades,
@@ -15,9 +16,20 @@ import {
 
 export default function Dashboard() {
   const [refreshing, setRefreshing] = useState(false);
+  const [initialLoading, setInitialLoading] = useState(true);
   const { success } = useToast();
   const { fetchStatus } = useBotStore();
   const { fetchOpenTrades, fetchClosedTrades } = useTradeStore();
+  const { refreshAll } = useDashboardData();
+
+  useEffect(() => {
+    // Set initial loading to false after first render
+    const timer = setTimeout(() => {
+      setInitialLoading(false);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleRefresh = async () => {
     setRefreshing(true);
@@ -63,25 +75,15 @@ export default function Dashboard() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Left Column - 2/3 width */}
         <div className="lg:col-span-2 space-y-6">
-          {/* Daily Profit Chart */}
           <DailyProfitChart />
-
-          {/* Active Trades */}
           <ActiveTrades />
-
-          {/* Trade Statistics */}
           <TradeStatistics />
         </div>
 
         {/* Right Column - 1/3 width */}
         <div className="space-y-6">
-          {/* Bot Status */}
           <BotStatusCard />
-
-          {/* Pair Performance */}
           <PairPerformance />
-
-          {/* Recent Activity */}
           <RecentActivity />
         </div>
       </div>
