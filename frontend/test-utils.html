@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Utility Functions Test</title>
+    <script type="importmap">
+    {
+        "imports": {
+            "@/utils/formatters": "./src/utils/formatters.ts",
+            "@/utils/validators": "./src/utils/validators.ts",
+            "@/utils/calculations": "./src/utils/calculations.ts",
+            "@/utils/helpers": "./src/utils/helpers.ts"
+        }
+    }
+    </script>
+</head>
+<body>
+    <h1>Utility Functions Test</h1>
+    <div id="results"></div>
+
+    <script type="module">
+        import { formatCurrency, formatNumber, formatPercent } from '@/utils/formatters';
+        import { isValidEmail, isValidUrl } from '@/utils/validators';
+        import { calculateProfitPercent, calculateROI } from '@/utils/calculations';
+        
+        const results = document.getElementById('results');
+        
+        // Test results
+        const tests = [
+            `Format currency: $1000 USD = ${formatCurrency(1000)}`,
+            `Format number: 1000.555 with 2 decimals = ${formatNumber(1000.555, 2)}`,
+            `Format percent: 0.1 = ${formatPercent(0.1)}`,
+            `Valid email test@example.com: ${isValidEmail('test@example.com')}`,
+            `Invalid email test: ${isValidEmail('test')}`,
+            `Valid URL https://example.com: ${isValidUrl('https://example.com')}`,
+            `Invalid URL example: ${isValidUrl('example')}`,
+            `Profit percent (100->110): ${calculateProfitPercent(100, 110)}`,
+            `ROI (100 profit, 1000 investment): ${calculateROI(100, 1000)}`
+        ];
+        
+        results.innerHTML = tests.map(test => `<p>${test}</p>`).join('');
+    </script>
+</body>
+</html>
