@@ -48,7 +48,7 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 relative">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
@@ -87,6 +87,16 @@ export default function Dashboard() {
           <RecentActivity />
         </div>
       </div>
+
+      {/* Loading Overlay */}
+      {initialLoading && (
+        <div className="absolute inset-0 bg-dark-900/80 backdrop-blur-sm flex items-center justify-center rounded-lg">
+          <div className="flex flex-col items-center gap-4">
+            <div className="w-12 h-12 border-4 border-primary-500 border-t-transparent rounded-full animate-spin"></div>
+            <p className="text-dark-200">Loading dashboard...</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
