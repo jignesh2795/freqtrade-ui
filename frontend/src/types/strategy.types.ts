@@ -23,7 +23,7 @@ export interface Strategy {
 export interface StrategyParameter {
   name: string;
   type: 'int' | 'float' | 'string' | 'boolean' | 'select';
-  value: any;
+  value: unknown;
   min?: number;
   max?: number;
   step?: number;

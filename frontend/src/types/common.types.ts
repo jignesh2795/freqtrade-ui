@@ -4,7 +4,7 @@
 
 export type Status = 'idle' | 'loading' | 'success' | 'error';
 
-export interface ApiResponse<T = any> {
+export interface ApiResponse<T = unknown> {
   data?: T;
   error?: string;
   message?: string;
@@ -31,7 +31,7 @@ export interface TimeRange {
 }
 
 export interface Filters {
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 export interface SortConfig {

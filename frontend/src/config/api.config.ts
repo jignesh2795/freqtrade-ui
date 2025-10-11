@@ -24,9 +24,9 @@ export const API_ENDPOINTS = {
 
   // Trades
   trades: '/trades',
-  trade: (id: number) => `/trade/${id}`,
+  trade: (_id: number) => `/trade/${_id}`,
   tradeHistory: '/trades/history',
-  forceSell: (id: number) => `/forcesell`,
+  forceSell: (_id: number) => `/forcesell`,
   forceBuy: '/forcebuy',
 
   // Performance
@@ -37,7 +37,7 @@ export const API_ENDPOINTS = {
 
   // Strategy
   strategies: '/strategies',
-  strategy: (name: string) => `/strategy/${name}`,
+  strategy: (_name: string) => `/strategy/${_name}`,
   availablePairs: '/available_pairs',
   whitelist: '/whitelist',
 
