@@ -52,6 +52,7 @@ export const endpoints = {
     get: '/show_config',
     whitelist: '/whitelist',
     blacklist: '/blacklist',
+    reload: '/reload_config',
   },
 
   // Backtesting

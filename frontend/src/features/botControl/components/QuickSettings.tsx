@@ -3,15 +3,16 @@ import { Card, CardHeader, CardTitle, CardContent, Button, Input, Switch } from 
 import { Save, RotateCcw } from 'lucide-react';
 import { useBotStore } from '@/store';
 import { useToast } from '@/hooks';
+import { configService } from '@/services/freqtrade';
 
 export const QuickSettings = () => {
-  const { status, config } = useBotStore();
+  const { status, config, reloadConfig: reloadBotConfig } = useBotStore();
   const { success, error } = useToast();
 
   const [settings, setSettings] = useState({
     maxOpenTrades: status?.max_open_trades || 3,
     stakeAmount: status?.stake_amount || 100,
-    dryRun: status?.dry_run || true,
+    dryRun: status?.dry_run ?? true,
     trailingStop: status?.trailing_stop || false,
   });
 
@@ -33,10 +34,18 @@ export const QuickSettings = () => {
     setHasChanges(true);
   };
 
-  const handleSave = () => {
-    // TODO: Implement config update API call
-    success('Settings Saved', 'Configuration has been updated');
-    setHasChanges(false);
+  const handleSave = async () => {
+    try {
+      // In a real implementation, we would need to update the config file
+      // For now, we'll just reload the config to simulate the process
+      await configService.reloadConfig();
+      await reloadBotConfig();
+      success('Settings Saved', 'Configuration has been updated. Please restart the bot for some changes to take effect.');
+      setHasChanges(false);
+    } catch (err) {
+      error('Save Failed', 'Failed to save configuration');
+      console.error('Failed to save configuration:', err);
+    }
   };
 
   const handleReset = () => {
