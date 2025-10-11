@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui';
 import { Cpu, HardDrive, Activity, Wifi } from 'lucide-react';
 import { clsx } from 'clsx';
+import { useApi } from '@/hooks';
+import { systemService } from '@/services/freqtrade';
 
 interface SystemStats {
   cpu: number;
@@ -18,23 +20,43 @@ export const SystemMonitor = () => {
     uptime: 0,
   });
 
+  const { data, loading, error, refetch } = useApi(
+    async () => {
+      const response = await systemService.getSystemInfo();
+      return response;
+    },
+    { autoFetch: true }
+  );
+
   useEffect(() => {
-    // TODO: Implement actual system stats API call
-    // For now, use mock data
-    const updateStats = () => {
-      setStats({
-        cpu: Math.random() * 100,
-        memory: 45 + Math.random() * 20,
+    if (data) {
+      // FreqTrade only provides CPU and RAM info
+      // For disk usage and uptime, we'll keep using mock data for now
+      setStats(prev => ({
+        ...prev,
+        cpu: Array.isArray(data.cpu_pct) && data.cpu_pct.length > 0 
+          ? data.cpu_pct.reduce((a, b) => a + b, 0) / data.cpu_pct.length 
+          : 0,
+        memory: data.ram_pct || 0,
+      }));
+    }
+  }, [data]);
+
+  // Update stats every 5 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      refetch();
+      
+      // Update mock data for disk and uptime
+      setStats(prev => ({
+        ...prev,
         disk: 60 + Math.random() * 10,
         uptime: Date.now() - new Date().setHours(0, 0, 0, 0),
-      });
-    };
-
-    updateStats();
-    const interval = setInterval(updateStats, 5000);
+      }));
+    }, 5000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [refetch]);
 
   const formatUptime = (ms: number) => {
     const seconds = Math.floor(ms / 1000);

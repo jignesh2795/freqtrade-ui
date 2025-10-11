@@ -6,3 +6,4 @@ export * from './backtestService';
 export * from './marketService';
 export * from './logService';
 export * from './configService';
+export * from './systemService';
