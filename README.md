@@ -2,16 +2,35 @@
 
 A professional, modern React-based UI for FreqTrade cryptocurrency trading bot.
 
-![Phase](https://img.shields.io/badge/Phase-0_Complete-success)
+![Phase](https://img.shields.io/badge/Phase-1_Complete-success)
 ![React](https://img.shields.io/badge/React-18.2-blue)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)
 ![Tailwind](https://img.shields.io/badge/Tailwind-3.3-38bdf8)
 
-## ��� Phase 0 Complete!
+## 🎉 Phase 1 Complete!
 
-Foundation is ready with FreqTrade integration, React setup, design system, and 15+ UI components.
+Core infrastructure is ready with API integration, WebSocket real-time updates, state management, routing, and layout system.
 
-## ��� Quick Start
+## ✨ Current Features
+
+### Phase 0 ✅
+- ✅ FreqTrade API integration
+- ✅ React + TypeScript setup
+- ✅ Custom design system
+- ✅ 15+ UI components
+- ✅ Dark mode support
+- ✅ Responsive design
+
+### Phase 1 ✅
+- ✅ Complete API service layer
+- ✅ WebSocket real-time updates
+- ✅ State management (Zustand)
+- ✅ Routing system (React Router v6)
+- ✅ Layout components (Sidebar, Header)
+- ✅ Utility functions
+- ✅ Error handling
+
+## 🚀 Quick Start
 
 ### Prerequisites
 - Python 3.8+
@@ -37,8 +56,11 @@ source .env/bin/activate
 # 2. Setup Frontend
 cd ../frontend
 npm install
-Running
-bash# Option 1: Use start script
+```
+
+### Running
+```bash
+# Option 1: Use start script
 ./scripts/start-dev.sh
 
 # Option 2: Manual start
@@ -51,113 +73,158 @@ freqtrade trade --config user_data/configs/config.json
 # Terminal 2 - Start Frontend
 cd frontend
 npm run dev
-Visit:
+```
 
-Frontend: http://localhost:5173
-FreqTrade API: http://localhost:8080/api/v1
-API Docs: http://localhost:8080/docs
+### Visit:
 
-��� Documentation
+- Frontend: http://localhost:5173
+- FreqTrade API: http://localhost:8080/api/v1
+- API Docs: http://localhost:8080/docs
 
-FreqTrade Setup
-API Endpoints
-Phase 0 Summary
+## 📚 Documentation
 
-✨ Features
-Completed (Phase 0)
+- [FreqTrade Setup](./docs/FREQTRADE_SETUP.md)
+- [API Endpoints](./docs/API_ENDPOINTS.md)
+- [Phase 0 Summary](./docs/PHASE_0_SUMMARY.md)
+- [Phase 1 Summary](./docs/PHASE_1_SUMMARY.md)
 
-✅ FreqTrade API integration
-✅ React + TypeScript setup
-✅ Custom design system
-✅ 15+ UI components
-✅ Component showcase
-✅ Dark mode support
-✅ Responsive design
-✅ Smooth animations
+## 🏗️ Architecture
 
-In Progress (Phase 1)
+### Frontend Structure
+```
+frontend/src/
+├── app/                # App configuration and routing
+├── components/
+│   ├── ui/            # Base UI components (15+)
+│   ├── layout/        # Layout components (Sidebar, Header)
+│   └── common/        # Common utilities (ErrorBoundary, Loading)
+├── features/          # Feature modules (8 pages)
+├── services/
+│   ├── api/           # API client
+│   ├── freqtrade/     # FreqTrade services (6 modules)
+│   └── websocket/     # WebSocket client
+├── store/             # Zustand state management (5 stores)
+├── hooks/             # Custom React hooks (5+)
+├── utils/             # Utility functions (40+)
+├── types/             # TypeScript definitions
+└── styles/            # Global styles
+```
 
-��� API service layer
-�� WebSocket integration
-��� State management
-��� Routing setup
-��� Layout components
+### Key Services
 
-Planned (Phase 2+)
+- botService: Bot control operations
+- tradeService: Trade management
+- performanceService: Statistics and metrics
+- strategyService: Strategy operations
+- backtestService: Backtesting
+- marketService: Market data
 
-��� Dashboard
-��� Trading interface
-��� Strategy management
-��� Backtesting
-��� Configuration editor
-�� Analytics
+### State Stores
 
-���️ Tech Stack
-Frontend:
+- botStore: Bot status and configuration
+- tradeStore: Trades with filtering
+- strategyStore: Strategy selection
+- marketStore: Market data and pairs
+- uiStore: UI preferences (persisted)
 
-React 18 + TypeScript
-Vite
-Tailwind CSS
-Zustand (state)
-React Router
-Axios
-Socket.io Client
-Lucide Icons
-Framer Motion
+## 🎯 Development Roadmap
 
-Backend:
+### Phase 0: Project Setup & Foundation (3 days) ✅
+### Phase 1: Core Infrastructure (1 week) ✅
+### Phase 2: MVP Features (2 weeks)
 
-FreqTrade
-Python
-SQLite
+- Dashboard with real data
+- Trade management
+- Bot control panel
+- Basic charting
 
-Development:
+### Phase 3: Advanced Features (4 weeks)
+### Phase 4: Production Ready (1 week)
 
-ESLint + Prettier
-Vitest
-Git
+## 📊 Current Status
 
-��� Project Structure
-freqtrade-ui/
-├── freqtrade/          # FreqTrade bot
-├── frontend/           # React app
-│   ├── src/
-│   │   ├── components/ # UI components
-│   │   ├── features/   # Feature modules
-│   │   ├── services/   # API services
-│   │   ├── store/      # State management
-│   │   ├── hooks/      # Custom hooks
-│   │   └── types/      # TypeScript types
-├── docs/               # Documentation
-└── scripts/            # Utility scripts
-��� Development Phases
+Phase 1 Complete:
 
- Phase 0: Project Setup & Foundation (3 days) ✅
- Phase 1: Core Infrastructure (1 week)
- Phase 2: MVP Features (2 weeks)
- Phase 3: Advanced Features (4 weeks)
- Phase 4: Production Ready (1 week)
+- 80 commits across 4 branches
+- 30+ components built
+- 6 API service modules
+- 5 state stores
+- 9 routes defined
+- 40+ utility functions
+- 100% TypeScript coverage
 
-��� Current Status
-Phase 0 Complete:
+## 🛠️ Tech Stack
 
-37 commits
-3 branches merged
-50+ files changed
-15+ components built
-100% type coverage
+### Frontend:
 
-��� Contributing
-This is a personal project. Guidelines coming soon.
-��� License
+- React 18 + TypeScript
+- Vite (build tool)
+- Tailwind CSS
+- Zustand (state management)
+- React Router v6
+- Axios (HTTP client)
+- Socket.io Client (WebSocket)
+- Lucide Icons
+- Framer Motion
+
+### Backend:
+
+- FreqTrade
+- Python
+- SQLite
+
+### Development:
+
+- ESLint + Prettier
+- Vitest (testing)
+- Git (version control)
+
+## 🧪 Testing
+```bash
+# Type checking
+npm run type-check
+
+# Linting
+npm run lint
+
+# Build
+npm run build
+
+# Run tests (coming in Phase 2)
+npm run test
+```
+
+## 📝 Scripts
+```bash
+./scripts/setup.sh       # Initial setup
+./scripts/start-dev.sh   # Start development environment
+```
+
+## 🤝 Contributing
+
+This is a personal project. Contribution guidelines coming soon.
+
+## 📄 License
+
 TBD
-��� Links
 
-FreqTrade
-React
-Tailwind CSS
+## 🔗 Links
 
+- [FreqTrade](https://www.freqtrade.io/)
+- [React](https://reactjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Zustand](https://github.com/pmndrs/zustand)
 
-Status: Phase 0 Complete ✅
-Last Updated: [Current Date]
-Next Milestone: Phase 1 - Core Infrastructure
+## 📈 Progress
+
+- Phase 0: ████████████████████ 100% (3 days)
+- Phase 1: ████████████████████ 100% (7 days)
+- Phase 2: ░░░░░░░░░░░░░░░░░░░░   0% (2 weeks planned)
+- Phase 3: ░░░░░░░░░░░░░░░░░░░░   0% (4 weeks planned)
+- Phase 4: ░░░░░░░░░░░░░░░░░░░░   0% (1 week planned)
+
+**Status:** Phase 1 Complete ✅  
+**Last Updated:** [Current Date]  
+**Next Milestone:** Phase 2 - MVP Features  
+**Lines of Code:** ~5000+  
+**Test Coverage:** TBD (Phase 2)
