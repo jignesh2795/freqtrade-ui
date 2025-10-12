@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
-import { Card, CardHeader, CardContent } from '@/components/ui';
+import { Card, CardHeader, CardContent, Switch } from '@/components/ui';
 import {
   TradingChart,
   TimeframeSelector,
   PairSelector,
   ChartControls,
+  PriceInfo,
 } from '@/components/charts';
 import { useMarketStore, useTradeStore, useStrategyStore } from '@/store';
 import { strategyService } from '@/services/freqtrade';
@@ -15,6 +16,7 @@ export default function ChartsPage() {
   const [selectedPair, setSelectedPair] = useState<string>('');
   const [selectedTimeframe, setSelectedTimeframe] = useState('1h');
   const [showIndicators, setShowIndicators] = useState(false);
+  const [showVolume, setShowVolume] = useState(true);
   const [loading, setLoading] = useState(false);
   const [chartData, setChartData] = useState<any[]>([]);
 
@@ -86,7 +88,7 @@ export default function ChartsPage() {
       <div>
         <h1 className="text-3xl font-bold text-dark-50">Charts</h1>
         <p className="text-dark-400 mt-1">
-          View price charts with trade markers and indicators
+          View price charts with trade markers and technical indicators
         </p>
       </div>
 
@@ -104,13 +106,32 @@ export default function ChartsPage() {
           />
         </div>
 
-        <ChartControls
-          onRefresh={handleRefresh}
-          onToggleIndicators={() => setShowIndicators(!showIndicators)}
-          showIndicators={showIndicators}
-          loading={loading}
-        />
+        <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2">
+            <Switch
+              checked={showVolume}
+              onChange={setShowVolume}
+              label="Volume"
+            />
+          </div>
+          <div className="flex items-center gap-2">
+            <Switch
+              checked={showIndicators}
+              onChange={setShowIndicators}
+              label="Indicators"
+            />
+          </div>
+          <ChartControls
+            onRefresh={handleRefresh}
+            loading={loading}
+          />
+        </div>
       </div>
+
+      {/* Price Info */}
+      {chartData.length > 0 && (
+        <PriceInfo data={chartData} pair={selectedPair} />
+      )}
 
       {/* Chart */}
       <Card>
@@ -133,52 +154,13 @@ export default function ChartsPage() {
               pair={selectedPair}
               trades={pairTrades}
               height={600}
-              showVolume={true}
+              showVolume={showVolume}
+              showMA={showIndicators}
+              maPeriods={{ sma: 20, ema: 50 }}
             />
           )}
         </CardContent>
       </Card>
-
-      {/* Chart Info */}
-      {chartData.length > 0 && (
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-          <Card variant="default" padding="sm">
-            <CardContent>
-              <div className="text-xs text-dark-400 mb-1">Candles</div>
-              <div className="text-lg font-semibold text-dark-50">
-                {chartData.length}
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card variant="default" padding="sm">
-            <CardContent>
-              <div className="text-xs text-dark-400 mb-1">Trades</div>
-              <div className="text-lg font-semibold text-dark-50">
-                {pairTrades.length}
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card variant="default" padding="sm">
-            <CardContent>
-              <div className="text-xs text-dark-400 mb-1">Open</div>
-              <div className="text-lg font-semibold text-dark-50">
-                {chartData[0]?.open.toFixed(8) || 'N/A'}
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card variant="default" padding="sm">
-            <CardContent>
-              <div className="text-xs text-dark-400 mb-1">Close</div>
-              <div className="text-lg font-semibold text-dark-50">
-                {chartData[chartData.length - 1]?.close.toFixed(8) || 'N/A'}
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      )}
     </div>
   );
 }
