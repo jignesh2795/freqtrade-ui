@@ -1,6 +1,5 @@
 import { lazy } from 'react';
 import { Navigate } from 'react-router-dom';
-import type { ReactElement } from 'react';
 
 // Lazy load pages
 const Dashboard = lazy(() => import('@/features/dashboard/Dashboard'));
@@ -11,10 +10,11 @@ const Configuration = lazy(() => import('@/features/configuration/ConfigurationP
 const BotControl = lazy(() => import('@/features/botControl/BotControlPage'));
 const Analytics = lazy(() => import('@/features/analytics/AnalyticsPage'));
 const Settings = lazy(() => import('@/features/settings/SettingsPage'));
+const Charts = lazy(() => import('@/features/charts/ChartsPage'));
 
 export interface RouteConfig {
   path: string;
-  element: ReactElement;
+  element: JSX.Element;
   name: string;
   icon?: string;
   showInNav?: boolean;
@@ -40,6 +40,13 @@ export const routes: RouteConfig[] = [
     element: <Trades />,
     name: 'Trades',
     icon: 'TrendingUp',
+    showInNav: true,
+  },
+  {
+    path: '/charts',
+    element: <Charts />,
+    name: 'Charts',
+    icon: 'BarChart3',
     showInNav: true,
   },
   {
