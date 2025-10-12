@@ -46,7 +46,7 @@ export const CHART_INDICATORS = [
   'ATR', 'ADX', 'CCI', 'MFI'
 ] as const;
 
-export const REFRESH_INTERVALS = {
+export const UI_REFRESH_INTERVALS = {
   fast: 5000,    // 5 seconds
   medium: 15000, // 15 seconds
   slow: 30000,   // 30 seconds

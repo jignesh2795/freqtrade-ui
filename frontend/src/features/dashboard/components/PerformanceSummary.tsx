@@ -23,19 +23,18 @@ export const PerformanceSummary = () => {
     return () => clearInterval(interval);
   }, [refetch]);
 
-  const totalProfit = profitData?.profit_all_coin || 0;
-  const totalProfitPercent = profitData?.profit_all_percent || 0;
-  const closedTrades = profitData?.closed_trade_count || 0;
-  const winRate = profitData
-    ? (profitData.winning_trades / closedTrades) * 100
-    : 0;
+  const totalProfit = profitData?.profit_all_coin ?? 0;
+  const totalProfitPercent = profitData?.profit_all_percent ?? 0;
+  const closedTrades = profitData?.closed_trade_count ?? 0;
+  const winningTrades = profitData?.winning_trades ?? 0;
+  const winRate = closedTrades > 0 && winningTrades !== undefined ? (winningTrades / closedTrades) * 100 : 0;
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
       <StatCard
         title="Total Profit"
         value={formatCurrency(totalProfit, status?.stake_currency || 'USDT')}
-        subtitle={formatPercent(totalProfitPercent / 100)}
+        subtitle={formatPercent(isNaN(totalProfitPercent / 100) ? 0 : totalProfitPercent / 100)}
         icon={DollarSign}
         trend={{
           value: totalProfitPercent,
@@ -56,8 +55,8 @@ export const PerformanceSummary = () => {
 
       <StatCard
         title="Win Rate"
-        value={`${winRate.toFixed(1)}%`}
-        subtitle={`${profitData?.winning_trades || 0}/${closedTrades} wins`}
+        value={`${isNaN(winRate) ? '0.0' : winRate.toFixed(1)}%`}
+        subtitle={`${winningTrades}/${closedTrades} wins`}
         icon={Target}
         color={winRate >= 50 ? 'success' : 'warning'}
         loading={loading}

@@ -7,12 +7,21 @@ export const formatCurrency = (
   currency: string = 'USD',
   locale: string = 'en-US'
 ): string => {
-  return new Intl.NumberFormat(locale, {
-    style: 'currency',
-    currency,
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  }).format(value);
+  // Check if it's a valid ISO currency code
+  try {
+    return new Intl.NumberFormat(locale, {
+      style: 'currency',
+      currency,
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    }).format(value);
+  } catch (e) {
+    // If not a valid currency code, format as number with currency symbol
+    return `${currency} ${new Intl.NumberFormat(locale, {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    }).format(value)}`;
+  }
 };
 
 export const formatPercent = (
