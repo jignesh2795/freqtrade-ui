@@ -35,6 +35,7 @@ interface NavItem {
 const navItems: NavItem[] = [
   { path: '/dashboard', name: 'Dashboard', icon: 'LayoutDashboard' },
   { path: '/trades', name: 'Trades', icon: 'TrendingUp' },
+  { path: '/charts', name: 'Charts', icon: 'BarChart3' },
   { path: '/strategies', name: 'Strategies', icon: 'Brain' },
   { path: '/backtesting', name: 'Backtesting', icon: 'Activity' },
   { path: '/bot-control', name: 'Bot Control', icon: 'Cpu' },
@@ -127,7 +128,7 @@ export const Sidebar = () => {
         {!sidebarCollapsed && (
           <div className="text-xs text-dark-500 text-center">
             <p>FreqTrade UI v0.1.0</p>
-            <p className="mt-1">Phase 1 - Core Infrastructure</p>
+            <p className="mt-1">Phase 2 - MVP Complete</p>
           </div>
         )}
       </div>
