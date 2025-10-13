@@ -1,12 +1,14 @@
 import React from 'react';
 import { BlockBase } from './BlockBase';
-import { IndicatorType } from '@/types/strategy';
+import { IndicatorType, INDICATOR_CONFIGS } from '@/types/strategy';
 
 interface IndicatorBlockProps {
   id: string;
   x: number;
   y: number;
   indicatorType: IndicatorType;
+  parameters: Record<string, number | string>;
+  outputs: number;
   onDragStart: (e: React.DragEvent, id: string) => void;
   onDragEnd: (e: React.DragEvent) => void;
   onConnectionStart?: (e: React.MouseEvent, id: string) => void;
@@ -14,37 +16,27 @@ interface IndicatorBlockProps {
   isSelected?: boolean;
 }
 
-const indicatorConfig: Record<IndicatorType, { title: string; description: string; color: string }> = {
-  sma: { title: 'SMA', description: 'Simple Moving Average', color: 'bg-blue-500' },
-  ema: { title: 'EMA', description: 'Exponential Moving Average', color: 'bg-green-500' },
-  rsi: { title: 'RSI', description: 'Relative Strength Index', color: 'bg-red-500' },
-  macd: { title: 'MACD', description: 'Moving Average Convergence Divergence', color: 'bg-purple-500' },
-  bollinger_bands: { title: 'Bollinger Bands', description: 'Volatility indicator', color: 'bg-yellow-500' },
-  stochastic: { title: 'Stochastic', description: 'Momentum indicator', color: 'bg-pink-500' },
-  atr: { title: 'ATR', description: 'Average True Range', color: 'bg-indigo-500' },
-  adx: { title: 'ADX', description: 'Average Directional Index', color: 'bg-teal-500' }
-};
-
 export function IndicatorBlock({
   id,
   x,
   y,
   indicatorType,
+  parameters,
+  outputs,
   onDragStart,
   onDragEnd,
   onConnectionStart,
   onConnectionEnd,
   isSelected
 }: IndicatorBlockProps) {
-  const config = indicatorConfig[indicatorType];
+  const config = INDICATOR_CONFIGS[indicatorType];
   
   return (
     <BlockBase
       id={id}
-      title={config.title}
-      description={config.description}
-      x={x}
-      y={y}
+      type="indicator"
+      position={{ x, y }}
+      label={config.label}
       onDragStart={onDragStart}
       onDragEnd={onDragEnd}
       onConnectionStart={onConnectionStart}

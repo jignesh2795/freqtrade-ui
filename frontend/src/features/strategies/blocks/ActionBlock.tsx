@@ -1,23 +1,19 @@
 import React from 'react';
 import { BlockBase } from './BlockBase';
-import { ActionType } from '@/types/strategy';
+import { ActionType, ACTION_CONFIGS } from '@/types/strategy';
 
 interface ActionBlockProps {
   id: string;
   x: number;
   y: number;
   actionType: ActionType;
+  parameters: Record<string, number | string>;
+  inputs: number;
   onDragStart: (e: React.DragEvent, id: string) => void;
   onDragEnd: (e: React.DragEvent) => void;
   onConnectionStart?: (e: React.MouseEvent, id: string) => void;
   onConnectionEnd?: (e: React.MouseEvent, id: string) => void;
   isSelected?: boolean;
-}
-
-const actionConfig: Record<ActionType, { title: string; description: string; color: string }> = {
-  buy: { title: 'Buy', description: 'Enter long position', color: 'bg-green-500' },
-  sell: { title: 'Sell', description: 'Exit position', color: 'bg-red-500' },
-  hold: { title: 'Hold', description: 'Maintain position', color: 'bg-yellow-500' }
 };
 
 export function ActionBlock({
@@ -25,21 +21,22 @@ export function ActionBlock({
   x,
   y,
   actionType,
+  parameters,
+  inputs,
   onDragStart,
   onDragEnd,
   onConnectionStart,
   onConnectionEnd,
   isSelected
 }: ActionBlockProps) {
-  const config = actionConfig[actionType];
+  const config = ACTION_CONFIGS[actionType];
   
   return (
     <BlockBase
       id={id}
-      title={config.title}
-      description={config.description}
-      x={x}
-      y={y}
+      type="action"
+      position={{ x, y }}
+      label={config.label}
       onDragStart={onDragStart}
       onDragEnd={onDragEnd}
       onConnectionStart={onConnectionStart}

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui';
 import { IndicatorBlock, ConditionBlock, ActionBlock } from '@/features/strategies/blocks';
-import { IndicatorType, ConditionOperator, ActionType } from '@/types/strategy';
+import { IndicatorType, ConditionType, ActionType } from '@/types/strategy';
 
 interface BlockPaletteProps {
   onBlockDragStart: (e: React.DragEvent, blockType: string, blockData: any) => void;
@@ -29,8 +29,10 @@ export function BlockPalette({ onBlockDragStart, onConnectionStart, onConnection
               id="palette-sma"
               x={0}
               y={0}
-              indicatorType="sma"
-              onDragStart={(e) => handleDragStart(e, 'indicator', { indicatorType: 'sma' })}
+              indicatorType="SMA"
+              parameters={{ period: 20, source: 'close' }}
+              outputs={1}
+              onDragStart={(e) => handleDragStart(e, 'indicator', { indicatorType: 'SMA', parameters: { period: 20, source: 'close' }, outputs: 1 })}
               onDragEnd={() => {}}
               onConnectionStart={onConnectionStart}
               onConnectionEnd={onConnectionEnd}
@@ -39,8 +41,10 @@ export function BlockPalette({ onBlockDragStart, onConnectionStart, onConnection
               id="palette-ema"
               x={0}
               y={0}
-              indicatorType="ema"
-              onDragStart={(e) => handleDragStart(e, 'indicator', { indicatorType: 'ema' })}
+              indicatorType="EMA"
+              parameters={{ period: 20, source: 'close' }}
+              outputs={1}
+              onDragStart={(e) => handleDragStart(e, 'indicator', { indicatorType: 'EMA', parameters: { period: 20, source: 'close' }, outputs: 1 })}
               onDragEnd={() => {}}
               onConnectionStart={onConnectionStart}
               onConnectionEnd={onConnectionEnd}
@@ -49,8 +53,10 @@ export function BlockPalette({ onBlockDragStart, onConnectionStart, onConnection
               id="palette-rsi"
               x={0}
               y={0}
-              indicatorType="rsi"
-              onDragStart={(e) => handleDragStart(e, 'indicator', { indicatorType: 'rsi' })}
+              indicatorType="RSI"
+              parameters={{ period: 14 }}
+              outputs={1}
+              onDragStart={(e) => handleDragStart(e, 'indicator', { indicatorType: 'RSI', parameters: { period: 14 }, outputs: 1 })}
               onDragEnd={() => {}}
               onConnectionStart={onConnectionStart}
               onConnectionEnd={onConnectionEnd}
@@ -65,8 +71,11 @@ export function BlockPalette({ onBlockDragStart, onConnectionStart, onConnection
               id="palette-gt"
               x={0}
               y={0}
-              operator="greater_than"
-              onDragStart={(e) => handleDragStart(e, 'condition', { operator: 'greater_than' })}
+              conditionType="greater"
+              parameters={{}}
+              inputs={2}
+              outputs={1}
+              onDragStart={(e) => handleDragStart(e, 'condition', { conditionType: 'greater', parameters: {}, inputs: 2, outputs: 1 })}
               onDragEnd={() => {}}
               onConnectionStart={onConnectionStart}
               onConnectionEnd={onConnectionEnd}
@@ -75,8 +84,11 @@ export function BlockPalette({ onBlockDragStart, onConnectionStart, onConnection
               id="palette-lt"
               x={0}
               y={0}
-              operator="less_than"
-              onDragStart={(e) => handleDragStart(e, 'condition', { operator: 'less_than' })}
+              conditionType="less"
+              parameters={{}}
+              inputs={2}
+              outputs={1}
+              onDragStart={(e) => handleDragStart(e, 'condition', { conditionType: 'less', parameters: {}, inputs: 2, outputs: 1 })}
               onDragEnd={() => {}}
               onConnectionStart={onConnectionStart}
               onConnectionEnd={onConnectionEnd}
@@ -85,8 +97,11 @@ export function BlockPalette({ onBlockDragStart, onConnectionStart, onConnection
               id="palette-crosses"
               x={0}
               y={0}
-              operator="crosses_above"
-              onDragStart={(e) => handleDragStart(e, 'condition', { operator: 'crosses_above' })}
+              conditionType="cross_above"
+              parameters={{}}
+              inputs={2}
+              outputs={1}
+              onDragStart={(e) => handleDragStart(e, 'condition', { conditionType: 'cross_above', parameters: {}, inputs: 2, outputs: 1 })}
               onDragEnd={() => {}}
               onConnectionStart={onConnectionStart}
               onConnectionEnd={onConnectionEnd}
@@ -102,7 +117,9 @@ export function BlockPalette({ onBlockDragStart, onConnectionStart, onConnection
               x={0}
               y={0}
               actionType="buy"
-              onDragStart={(e) => handleDragStart(e, 'action', { actionType: 'buy' })}
+              parameters={{}}
+              inputs={1}
+              onDragStart={(e) => handleDragStart(e, 'action', { actionType: 'buy', parameters: {}, inputs: 1 })}
               onDragEnd={() => {}}
               onConnectionStart={onConnectionStart}
               onConnectionEnd={onConnectionEnd}
@@ -112,7 +129,9 @@ export function BlockPalette({ onBlockDragStart, onConnectionStart, onConnection
               x={0}
               y={0}
               actionType="sell"
-              onDragStart={(e) => handleDragStart(e, 'action', { actionType: 'sell' })}
+              parameters={{}}
+              inputs={1}
+              onDragStart={(e) => handleDragStart(e, 'action', { actionType: 'sell', parameters: {}, inputs: 1 })}
               onDragEnd={() => {}}
               onConnectionStart={onConnectionStart}
               onConnectionEnd={onConnectionEnd}

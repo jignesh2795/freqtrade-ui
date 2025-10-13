@@ -2,11 +2,11 @@ import React, { useState, useRef } from 'react';
 import { IndicatorBlock, ConditionBlock, ActionBlock, BlockBase } from '@/features/strategies/blocks';
 import { ConnectionLine } from './connections/ConnectionLine';
 import { v4 as uuidv4 } from 'uuid';
-import { IndicatorType, ConditionOperator, ActionType } from '@/types/strategy';
+import { IndicatorType, ConditionType, ActionType } from '@/types/strategy';
 
 interface CanvasBlock {
   id: string;
-  type: string;
+  type: 'indicator' | 'condition' | 'action';
   x: number;
   y: number;
   data: any;
@@ -42,7 +42,7 @@ export function StrategyCanvas() {
     
     const newBlock: CanvasBlock = {
       id: uuidv4(),
-      type: blockType,
+      type: blockType as 'indicator' | 'condition' | 'action',
       x,
       y,
       data: blockData
@@ -131,6 +131,8 @@ export function StrategyCanvas() {
               x={block.x}
               y={block.y}
               indicatorType={block.data.indicatorType as IndicatorType}
+              parameters={block.data.parameters || {}}
+              outputs={block.data.outputs || 1}
               onDragStart={handleBlockDragStart}
               onDragEnd={handleBlockDragEnd}
               onConnectionStart={handleConnectionStart}
@@ -146,7 +148,10 @@ export function StrategyCanvas() {
               id={block.id}
               x={block.x}
               y={block.y}
-              operator={block.data.operator as ConditionOperator}
+              conditionType={block.data.conditionType as ConditionType}
+              parameters={block.data.parameters || {}}
+              inputs={block.data.inputs || 2}
+              outputs={block.data.outputs || 1}
               onDragStart={handleBlockDragStart}
               onDragEnd={handleBlockDragEnd}
               onConnectionStart={handleConnectionStart}
@@ -163,6 +168,8 @@ export function StrategyCanvas() {
               x={block.x}
               y={block.y}
               actionType={block.data.actionType as ActionType}
+              parameters={block.data.parameters || {}}
+              inputs={block.data.inputs || 1}
               onDragStart={handleBlockDragStart}
               onDragEnd={handleBlockDragEnd}
               onConnectionStart={handleConnectionStart}
