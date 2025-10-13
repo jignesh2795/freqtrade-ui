@@ -5,6 +5,7 @@ import { Navigate } from 'react-router-dom';
 const Dashboard = lazy(() => import('@/features/dashboard/Dashboard'));
 const Trades = lazy(() => import('@/features/trades/TradesPage'));
 const Strategies = lazy(() => import('@/features/strategies/StrategiesPage'));
+const StrategyBuilder = lazy(() => import('@/features/strategies/StrategyBuilder'));
 const Backtesting = lazy(() => import('@/features/backtesting/BacktestingPage'));
 const Configuration = lazy(() => import('@/features/configuration/ConfigurationPage'));
 const BotControl = lazy(() => import('@/features/botControl/BotControlPage'));
@@ -55,6 +56,14 @@ export const routes: RouteConfig[] = [
     name: 'Strategies',
     icon: 'Brain',
     showInNav: true,
+    children: [
+      {
+        path: '/strategies/builder',
+        element: <StrategyBuilder />,
+        name: 'Strategy Builder',
+        showInNav: false,
+      },
+    ],
   },
   {
     path: '/backtesting',
