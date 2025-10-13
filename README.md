@@ -76,12 +76,19 @@ Access:
 
 ## 📚 Documentation
 
+### Phase Documentation
 - [Phase 0 Summary](docs/PHASE_0_SUMMARY.md) - Setup & Foundation
 - [Phase 1 Summary](docs/PHASE_1_SUMMARY.md) - Core Infrastructure
 - [Phase 2 Summary](docs/PHASE_2_SUMMARY.md) - MVP Features
+
+### Technical Documentation
 - [API Endpoints](docs/API_ENDPOINTS.md) - Available API endpoints
 - [Trade Management](docs/TRADE_MANAGEMENT.md) - Trade system documentation
 - [Charts System](docs/CHARTS.md) - Charting system documentation
+
+### Project Status & Planning
+- [Current Project Status](docs/CURRENT_PROJECT_STATUS.md) - Comprehensive project overview
+- [Phase 3 Detailed Plan](docs/PHASE_3_DETAILED_PLAN.md) - Day-by-day implementation plan
 
 ## 🎯 Features in Detail
 
@@ -230,6 +237,6 @@ TBD
 ## 📅 Status
 
 - Status: Phase 2 Complete - MVP Delivered ✅
-- Last Updated: 2025-10-12
+- Last Updated: 2025-10-13
 - Next Milestone: Phase 3 - Advanced Features
 - Total Development Time: 96 hours across 24 days
