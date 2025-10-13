@@ -1,5 +1,5 @@
 import React from 'react';
-import { BlockBase } from './BlockBase';
+import { BlockBase } from '@/components/strategy/blocks/BlockBase';
 import { ConditionType, CONDITION_CONFIGS } from '@/types/strategy';
 
 interface ConditionBlockProps {
@@ -35,15 +35,26 @@ export function ConditionBlock({
   
   return (
     <BlockBase
-      id={id}
-      type="condition"
-      position={{ x, y }}
+      block={{
+        id,
+        type: 'condition',
+        position: { x, y },
+        conditionType,
+        parameters,
+        inputs,
+        outputs
+      }}
+      color={config.color}
+      icon={config.symbol}
       label={config.label}
-      onDragStart={onDragStart}
-      onDragEnd={onDragEnd}
-      onConnectionStart={onConnectionStart}
-      onConnectionEnd={onConnectionEnd}
-      isSelected={isSelected}
+      inputs={inputs}
+      outputs={outputs}
+      onPositionChange={(id, position) => {
+        // Handle position change
+      }}
+      onDelete={(id) => {
+        // Handle delete
+      }}
     >
       <div className="flex items-center justify-center w-8 h-8 rounded-full bg-dark-700">
         <span className="text-lg font-bold text-dark-100">{config.symbol}</span>

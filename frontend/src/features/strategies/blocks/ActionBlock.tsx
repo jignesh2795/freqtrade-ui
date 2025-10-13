@@ -1,5 +1,5 @@
 import React from 'react';
-import { BlockBase } from './BlockBase';
+import { BlockBase } from '@/components/strategy/blocks/BlockBase';
 import { ActionType, ACTION_CONFIGS } from '@/types/strategy';
 
 interface ActionBlockProps {
@@ -33,15 +33,24 @@ export function ActionBlock({
   
   return (
     <BlockBase
-      id={id}
-      type="action"
-      position={{ x, y }}
+      block={{
+        id,
+        type: 'action',
+        position: { x, y },
+        actionType,
+        parameters,
+        inputs
+      }}
+      color={config.color}
+      icon={config.icon}
       label={config.label}
-      onDragStart={onDragStart}
-      onDragEnd={onDragEnd}
-      onConnectionStart={onConnectionStart}
-      onConnectionEnd={onConnectionEnd}
-      isSelected={isSelected}
+      inputs={inputs}
+      onPositionChange={(id, position) => {
+        // Handle position change
+      }}
+      onDelete={(id) => {
+        // Handle delete
+      }}
     >
       <div className="flex items-center justify-center w-8 h-8 rounded-full bg-dark-700">
         <div className={`w-4 h-4 rounded-full ${config.color}`}></div>
